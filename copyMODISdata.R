@@ -14,7 +14,7 @@
 
 #### input parameters / user settings ####
 # specify download folder 
-indir <- "C:/Users/cak69xb/Downloads/MOD13Q1_Qualitiy_Unterfranken_2001-2019"
+indir <- "C:/Users/.../Downloads/MOD13Q1_Qualitiy_Unterfranken_2001-2019"
 # list all tiff-files
 files <- list.files(indir, patter = "*.tif$", full.names = T)
 # infiles <- basename(files)
@@ -22,7 +22,7 @@ files <- list.files(indir, patter = "*.tif$", full.names = T)
 # vector of years downloaded
 years <- seq(2001, 2019) # alternative: years <- c(2001,2005,2019)
 
-for (i in 2:length(years)){
+for (i in 1:length(years)){
   # define subdir name
   odir <- paste0(indir, "/", years[i])
   # create the subdir year[i]
