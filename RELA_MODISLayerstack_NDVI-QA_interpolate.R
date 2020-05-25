@@ -11,7 +11,6 @@ loadandinstall("stringr")
 loadandinstall("raster")
 loadandinstall("rgeos")
 loadandinstall("rgdal")
-loadandinstall("sf")
 
 #### input parameters / user settings ####
 indir <- "F:/2019_LehreCK_Sicherung/03_MSc/02_RELA-2/RELA-Daten/MODIS_Ufr_2001-2019/MODIS_layerstacks"
