@@ -1,6 +1,7 @@
 # Dr. Carina Kübert-Flock
-# sortMODISdata.R
+# copyMODISdata.R
 # 2020-05-17
+# last run: 2020-05-25
 # R version 3.6.2 (2019-12-12) -- "Dark and Stormy Night"
 # small program to copy MODIS data downloaded with appEEARS into subfolders by year
 # to run the code, you need to first copy all downloaded MODIS SDS into one dir (NDVI into one, Quality into another), which then is specified in line 17
@@ -14,7 +15,7 @@
 
 #### input parameters / user settings ####
 # specify download folder 
-indir <- "C:/Users/.../Downloads/MOD13Q1_Quality_Unterfranken_2001-2019" # or indir <- "C:/Users/.../Downloads/MOD13Q1_NDVI_Unterfranken_2001-2019"
+indir <- "F:/.../MOD13Q1_PixelReliability_Unterfranken_2001-2019" 
 # list all tiff-files
 files <- list.files(indir, patter = "*.tif$", full.names = T)
 # infiles <- basename(files)
