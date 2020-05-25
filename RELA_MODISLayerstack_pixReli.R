@@ -58,5 +58,5 @@ for (i in 1:length(years)){
   # plot(datafile2[[1]])
   
   # save file to ~/MODIS_DOA_input/
-  writeRaster(datafile2, filename=paste0(odir, "/", basename(gsub(".vrt", ".tif", file.path(vrtFile)))), datatype=dtsetR)
+  writeRaster(datafile2, filename=paste0(odir, "/", basename(gsub(".vrt", ".tif", file.path(vrtFile)))), datatype="INT2S")
 }

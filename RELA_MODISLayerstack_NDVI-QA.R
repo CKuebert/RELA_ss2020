@@ -47,7 +47,7 @@ for (i in 1:length(infiles)){
   dataOut <- mask(NDVI, pixReliBinary, maskvalue = 1)
   
   # save file to ~/MODIS_DOA_input/
-  writeRaster(dataOut, filename=paste0(indir, "/", basename(gsub("pixReli", "NDVI-QA", file.path(infilespixReli[i])))), datatype=dtsetR)
+  writeRaster(dataOut, filename=paste0(indir, "/", basename(gsub("pixReli", "NDVI-QA", file.path(infilespixReli[i])))), datatype="INT2S")
   
 }
 

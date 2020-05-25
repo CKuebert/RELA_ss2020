@@ -27,8 +27,6 @@ shp <- st_read("F:/.../Unterfranken.shp")
 
 # define year range
 years <- seq(2001,2019) # years <- 2019
-dtsetR <- "INT2S" # for NDVI
-
 
 #### for each year = each folder ####
 for (i in 1:length(years)){
@@ -59,7 +57,7 @@ for (i in 1:length(years)){
   # plot(datafile2[[1]])
   
   # save file to ~/MODIS_DOA_input/
-  writeRaster(datafile2, filename=paste0(odir, "/", basename(gsub(".vrt", ".tif", file.path(vrtFile)))), datatype=dtsetR)
+  writeRaster(datafile2, filename=paste0(odir, "/", basename(gsub(".vrt", ".tif", file.path(vrtFile)))), datatype="INT2S")
 }
 
 
