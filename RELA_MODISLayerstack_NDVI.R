@@ -16,14 +16,14 @@ loadandinstall("sf")
 
 #### input parameters / user settings ####
 # path to NDVI dir
-indir <- "F:/2019_LehreCK_Sicherung/03_MSc/02_RELA-2/RELA-Daten/MODIS_Ufr_2001-2019/MOD13Q1_NDVI_Unterfranken_2001-2019"
+indir <- "F:/.../MOD13Q1_NDVI_Unterfranken_2001-2019"
 # path to output where layserstacks are saved
-odir <-  "F:/2019_LehreCK_Sicherung/03_MSc/02_RELA-2/RELA-Daten/MODIS_Ufr_2001-2019/MODIS_layerstacks"
+odir <-  "F:/.../MODIS_layerstacks"
 # create odir, if it does't exist
 if (file.exists(odir) != T) {dir.create(odir)}
 
 # read shapefile of study area, here Lower Franconia, for masking the study area
-shp <- st_read("F:/2019_LehreCK_Sicherung/03_MSc/02_RELA-2/RELA-Daten/Vektordaten_Unterfranken/Unterfranken.shp")
+shp <- st_read("F:/.../Unterfranken.shp")
 
 # define year range
 years <- seq(2001,2019) # years <- 2019
