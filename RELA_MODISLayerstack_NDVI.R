@@ -12,13 +12,31 @@ loadandinstall("raster")
 loadandinstall("rgeos")
 loadandinstall("rgdal")
 loadandinstall("sf")
-loadandinstall("gdalUtils")
-gdal_setInstallation()
-gdalPath <- getOption("gdalUtils_gdalPath")[[1]]$path # find gdal installation
 
-#### functions ####
-myStackInteger <- function(files2stack, dtsetR){
+
+#### input parameters / user settings ####
+# path to NDVI dir
+indir <- "F:/2019_LehreCK_Sicherung/03_MSc/02_RELA-2/RELA-Daten/MODIS_Ufr_2001-2019/MOD13Q1_NDVI_Unterfranken_2001-2019"
+# path to output where layserstacks are saved
+odir <-  "F:/2019_LehreCK_Sicherung/03_MSc/02_RELA-2/RELA-Daten/MODIS_Ufr_2001-2019/MODIS_layerstacks"
+# create odir, if it does't exist
+if (file.exists(odir) != T) {dir.create(odir)}
+
+# read shapefile of study area, here Lower Franconia, for masking the study area
+shp <- st_read("F:/2019_LehreCK_Sicherung/03_MSc/02_RELA-2/RELA-Daten/Vektordaten_Unterfranken/Unterfranken.shp")
+
+# define year range
+years <- seq(2001,2019) # years <- 2019
+dtsetR <- "INT2S" # for NDVI
+
+
+#### for each year = each folder ####
+for (i in 1:length(years)){
+  idir <- paste0(indir, "/", years[i])
+  # list all files to stack
+  infiles <- list.files(idir, pattern = "*.tif$", full.names = T)
   
+  #### stack all files, mask them and save output using function myStackInteger ####
   # define the output vrt-file
   vrtFile <- file.path(indir, paste0("MOD13Q1.006__250m_16_days_NDVI_", years[i],'.vrt'))
   # built a vrt from all infiles
@@ -31,27 +49,17 @@ myStackInteger <- function(files2stack, dtsetR){
   # set NAvalue
   NAvalue(datafile) <- -3000
   
+  # # check, how datafile looks by plotting the first layer datafile[[1]]
+  # plot(datafile[[1]])
+  
+  # mask study area
+  datafile2 <- mask(datafile,shp)
+  
+  # # check, how datafile2 looks by plotting the first layer datafile2[[1]]
+  # plot(datafile2[[1]])
+  
   # save file to ~/MODIS_DOA_input/
-  writeRaster(datafile, filename=paste0(odir, "/", basename(gsub(".vrt", ".tif", file.path(vrtFile)))), datatype=dtsetR)
-}
-
-
-#### input parameters / user settings ####
-indir <- "F:/2019_LehreCK_Sicherung/03_MSc/02_RELA-2/RELA-Daten/MODIS_Ufr_2001-2019/MOD13Q1_NDVI_Unterfranken_2001-2019"
-odir <-  "F:/2019_LehreCK_Sicherung/03_MSc/02_RELA-2/RELA-Daten/MODIS_Ufr_2001-2019/MODIS_layerstacks"
-# create odir, if it does't exist
-if (file.exists(odir) != T) {dir.create(odir)}
-# define year range
-years <- seq(2001,2019) # years <- 2019
-dtsetR <- "INT2S" # for NDVI
-
-# for each year = each folder
-for (i in 1:length(years)){
-  idir <- paste0(indir, "/", years[i])
-  # list all files to stack
-  infiles <- list.files(idir, pattern = "*.tif$", full.names = T)
-  # stack all files, mask them and save output using function myStackInteger
-  myStackInteger(files2stack = infiles, dtsetR)
+  writeRaster(datafile2, filename=paste0(odir, "/", basename(gsub(".vrt", ".tif", file.path(vrtFile)))), datatype=dtsetR)
 }
 
 
