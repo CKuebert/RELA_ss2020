@@ -1,9 +1,10 @@
 # Dr. Carina Kuebert-Flock
-# RELA_MODISLayerstack_NDVI-QA.R
+# 03_MODIS_maskNDVIwithQAsummary.R
 # 2020-05-25
 # last run: 2020-05-25
 # R version 3.6.2 (2019-12-12) - "Dark and Stormy Night"
 # This program masks MODIS NDVI layerstacked data using pixReli layerstacked data
+# run this code after you ran 01_RELA_MODIS_layerstack_NDVI.R and 02_RELA_MODIS_layerstack_pixReli.R
 
 ### packages ####
 loadandinstall <- function(mypkg) {if (!is.element(mypkg, installed.packages()[,1])){install.packages(mypkg)}; library(mypkg, character.only=TRUE)  }

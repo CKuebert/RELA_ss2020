@@ -1,9 +1,10 @@
 # Dr. Carina Kuebert-Flock
-# RELA_MODISLayerstack_NDVI-QA_interpolate.R
+# 04_MODIS_interpolateNDVI.R
 # 2020-05-25
 # last run: 2020-05-25
 # R version 3.6.2 (2019-12-12) - "Dark and Stormy Night"
 # This program interpolates NDVI values which were masked out due to bad quality
+# run this code after you ran 03_MODIS_maskNDVIwithQAsummary.R
 
 ### packages ####
 loadandinstall <- function(mypkg) {if (!is.element(mypkg, installed.packages()[,1])){install.packages(mypkg)}; library(mypkg, character.only=TRUE)  }
@@ -23,6 +24,6 @@ for (i in 1:length(infiles)){
   dataInterpol <- raster::approxNA(data, method="linear", rule=1)
   
   # save file to ~/MODIS_DOA_input/
-  writeRaster(dataOut, filename=paste0(indir, "/", basename(gsub("NDVI-QA", "NDVI-QA_interpol", file.path(infiles[i])))), datatype="INT2S")
+  writeRaster(dataInterpol, filename=paste0(indir, "/", basename(gsub("NDVI-QA", "NDVI-QA_interpol", file.path(infiles[i])))), datatype="INT2S")
   
 }
