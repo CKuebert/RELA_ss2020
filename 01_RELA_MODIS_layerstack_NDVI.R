@@ -4,7 +4,7 @@
 # last run: 2020-05-28
 # R version 3.6.2 (2019-12-12) - "Dark and Stormy Night"
 # This program layerstacks MOD13Q1 NDVI data downloaded from appEEARS as GeoTiff.
-# Before running the code, you need to copy all AppEEARS data into a separate folder. 
+# Before running the code, you need to structure all AppEEARS data using 00_structureMODISdata.R
 
 ### packages ####
 loadandinstall <- function(mypkg) {if (!is.element(mypkg, installed.packages()[,1])){install.packages(mypkg)}; library(mypkg, character.only=TRUE)  }
