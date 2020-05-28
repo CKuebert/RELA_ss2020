@@ -1,8 +1,8 @@
 # Dr. Carina Kübert-Flock
-# readPlot_appEEARScsv.R
+# 00_readPlotcsv_appEEARS.R
 # 2020-05-15
 # R version 3.6.2 (2019-12-12) -- "Dark and Stormy Night"
-# small program to plot mean NDVI time series 
+# small program to plot mean NDVI time series from the csv-file downloaded with appEEARS.
 
 #### install packages ####
 loadandinstall <- function(mypkg) {if (!is.element(mypkg, installed.packages()[,1])){install.packages(mypkg)}; library(mypkg, character.only=TRUE) }
