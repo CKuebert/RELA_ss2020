@@ -15,7 +15,7 @@
 
 #### input parameters / user settings ####
 # specify download folder 
-indir <- "F:/2019_LehreCK_Sicherung/03_MSc/02_RELA-2/RELA-Daten/MOD13A3_NDVI_1km_monthly" 
+indir <- "F:/2019_LehreCK_Sicherung/03_MSc/02_RELA-2/RELA-Daten/MOD13A3_pixReli_1km_monthly" 
 # list all tiff-files
 files <- list.files(indir, patter = "*.tif$", full.names = T)
 # infiles <- basename(files)
